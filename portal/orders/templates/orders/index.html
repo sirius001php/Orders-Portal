@@ -1,0 +1,150 @@
+{% extends 'orders/base.html' %}
+{% load static %}
+{% block title %}
+    {{ title }}
+{% endblock %}
+
+{% block css  %}
+    <link href="{% static 'vendor/css/index.css' %}" rel="stylesheet">
+{% endblock  %}
+
+
+{% block pagecontent %}
+<div class="page-content">
+    <div class="container-fluid p-3">
+            <h5>Hi user, ready to work?</h5>
+    </div>
+
+
+
+<div class="container-fluid bg-light">
+    <div class="d-flex flex-row justify-content-between p-2">
+        <div class="d-flex flex-row">
+            <div class="d-flex flex-row">
+                <div class="p-2"><img src="{% static 'vendor/img/motivation.jpg' %}" width="110" height="110"></div>
+                <div class="p-2 pl-3">Asigned job #58</div>            
+                <div class="p-2 pl-3"><i class="fa-solid fa-angle-right"></i></div>
+                <div class="p-2 pl-3"><i class="fa-solid fa-download"></i></div>
+                <div class="p-2 pl-3"><i class="fa-solid fa-upload"></i></div>
+                <div class="p-2 pl-3"><i class="fa-solid fa-ticket"></i></div>
+            </div>
+        </div>
+        <div class="d-flex align-items-end flex-column">
+            <div class="p-2">   
+                <p>Time left 9:50</p>
+                </div>
+            <div class="mt-auto p-2">
+                <button type="button" class="btn btn-primary">Mark as done</button></td>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container-fluid py-4 mt-3 bg-light">
+    <p class="lead">List of orders:</p>
+    <div class="table-responsive">
+        <table class="table table-bordered border-4 text-center  text-secondary">
+
+            <caption>Showing 3 to 3 of 3 etries</caption>
+
+            <thead style="background-color: #D4D4D4;">
+              <tr>
+                <th>Job ID</th>
+                <th>Marketplace</th>
+                <th>Date create</th>
+                <th>Image</th>
+                <th>Instructions</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+
+                <td>51</td>
+                <td>Zak</td>
+                <td>16.04.2024 18:05</td>
+                <td><img src="{% static 'vendor/img/motivation.jpg' %}" width="50" height="50"></td>
+                <td></td>
+                <td>
+                    <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#acceptModal">Accept</button></td>
+                
+              </tr>
+              <tr>
+
+                <td>51</td>
+                <td>Zak</td>
+                <td>16.04.2024 18:05</td>
+                <td><img src="{% static 'vendor/img/motivation.jpg' %}" width="50" height="50"></td>
+                <td></td>
+                <td><button type="button" class="btn" style="background-color: #C5ADFD;">Accept</button></td>
+              </tr>
+              <tr>
+
+                <td>51</td>
+                <td>Zak</td>
+                <td>16.04.2024 18:05</td>
+                <td><img src="{% static 'vendor/img/motivation.jpg' %}" width="50" height="50"></td>
+                <td></td>
+                <td><button type="button" class="btn btn-warning">Accept</button></td>
+              </tr>
+            </tbody>
+          </table>
+    </div>
+</div>
+<div class="modal fade"  id="acceptModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 class="modal-title fs-5" id="exampleModalLabel">Accept form</h3>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body text-center">
+            <img src="v{% static 'vendor/img/motivation.jpg' %}" width="400" height="400">
+        </div>
+        <div class="modal-footer d-flex justify-content-center ">  
+            <div class="container">
+                <div class="card">
+                  <div class="card-body">
+                      <div class="table-responsive">
+                          <table class="table mb-0">
+                              <thead>
+                                  <tr>
+                                      <td style="width: 40%">Task Type</td>
+                                      <td style="width: 20%">Rate, USD</td>
+                                      <td style="width: 20%">Quantity</td>
+                                      <td style="width: 20%">Total, USD</td>
+                                  </tr>
+                              </thead>
+                              <tbody> 
+                                  <tr>
+                                      <td>Person Conversion</td>
+                                      <td>$ 2.50</td>
+                                      <td><input class="positive-input form-control" ></td>
+                                      <td>$ 2.50</td>
+                                  </tr>
+                              <tr>
+                                  <td></td>
+                                  <td>Total</td>
+                                  <td>1</td>
+                                  <td>$ 2.50</td>
+                              </tr>            
+                              </tbody>
+                          </table>
+                      </div>
+                          <div>
+                              <button class="btn btn-primary" id="saveChanges" data-job-id="71858" style="display: none;">Update tasks</button>
+                          </div>
+                      </div><!--end card-body-->
+                  </div><!--end card-->
+            </div> 
+            <button type="button" class="btn btn-primary">Accept Job</button>
+          
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock  %}
+
+

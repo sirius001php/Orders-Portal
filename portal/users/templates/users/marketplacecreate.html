@@ -1,0 +1,72 @@
+{% extends 'orders/base.html' %}
+{% load static %}
+{% block title %}
+    {{ title }}
+{% endblock %}
+{% block css %}
+    <link href="{% static 'vendor/css/order.css'%}" rel="stylesheet">
+{% endblock     %}
+    
+{% block pagecontent %}
+<div class="page-content">
+    <div class="container-fluid text-center p-3">
+            <h2>Create MarketPlace</h2>
+    </div>
+<!-- Page Content -->
+<div class="custom-card">
+    <form method='post'>
+    {% csrf_token %}
+    <div class="card">
+        <div class="card-body">
+            <div>
+                <h4 class="header-title mt-0 mb-3">Information</h4>
+            </div>
+            <div class="table-responsive">
+                <table class="table mb-0 table-centered">
+                        <tbody>
+                        <tr>
+                            <td><label for="{{form.marketplace_name.id_for_label}}" class="form-label pt-2">Name Marketplace</label></td>
+                            <td>{{form.marketplace_name}}</td>
+                        </tbody>
+                        
+                    </form>
+                </table>
+            </div>
+        </div><!--end card-body-->
+    </div><!--end card-->  
+    <div class="card">
+        <div class="card-body">
+            <div>
+                <h4 class="header-title ">Rate</h4>
+            </div>
+            <div class="table-responsive">
+                        <table class="table mb-0 table-centered">
+                            <tbody>
+                                <tr>
+                                    <td><label for="{{form.rate_for_employer.id_for_label}}" class="form-label pt-2">Rate per face</label></td>
+                                    <td>{{form.rate_for_employer}}</td>
+                                    <td><label for="{{form.rate_for_worker.id_for_label}}" class="form-label pt-2">Rate worker</label></td>
+                                    <td>{{form.rate_for_worker}}</td>
+                                    <td><label for="{{form.rate_for_admin.id_for_label}}" class="form-label pt-2">Comissoin</label></td>
+                                    <td>{{form.rate_for_admin}}</td>
+                                </tr>
+                                </tr>
+                            
+                            </tbody>
+                        </table>
+                </form>
+            </div>
+        </div><!--end card-body-->
+
+    </div><!--end card--> 
+    <div class="card">
+        <div class="card-body text-center">
+            <button type="submit" class="btn btn-primary">Create</button>
+        </div>
+    </div>
+    </form>
+</div>
+
+{% endblock %}
+
+

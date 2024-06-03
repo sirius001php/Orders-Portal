@@ -1,0 +1,44 @@
+{% extends 'orders/base.html' %}
+{% load static %}
+{% block title %}
+    {{ title }}
+{% endblock %}
+{% block css %}
+    <link href="{% static 'vendor/css/order.css'%}" rel="stylesheet">
+{% endblock     %}
+    
+{% block pagecontent %}
+<div class="page-content">
+    <div class="container-fluid text-center p-3">
+            <h2>Your MarketPlace</h2>
+    </div>
+<!-- Page Content -->
+{% for item in data %}
+<div class="container-fluid mb-2 bg-dark text-white">
+    <div class="d-flex flex-row justify-content-between p-2">
+        <div class="d-flex flex-row">
+            <div class="d-flex flex-column">
+                <p>Marketplace name {{item.marketplace_name}} </p>
+                <p>Rate per face {{item.rate_id.rate_for_employer}} </p>
+                <p>Rate for worker {{item.rate_id.rate_for_worker}} </p>
+                <p>Rate for admin{{item.rate_id.rate_for_admin}} </p>
+            </div>
+        </div>
+        <div class="d-flex align-items-end flex-column">
+            <div class="p-2">   
+                <button type="button" class="btn btn-primary">Delete</button></td>
+                </div>
+            <div class="mt-auto p-2">
+                <button type="button" class="btn btn-primary">Change information</button></td>
+            </div>
+        </div>
+    </div>
+</div>
+{% endfor %}
+<div class="container-fluid pt-2">
+    <button type="button" class="btn btn-primary" ><a href={% url 'users:marketplacecreate' %} class='text-white'>Create new marketplace</a></button>
+</div>
+                  
+{% endblock %}
+
+

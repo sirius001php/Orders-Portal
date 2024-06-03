@@ -1,0 +1,177 @@
+{% extends 'orders/base.html' %}
+{% load static %}
+{% block title %}
+    {{ title }}
+{% endblock %}
+
+{% block css  %}
+    <link href="{% static 'vendor/css/profile.css' %}" rel="stylesheet">
+{% endblock  %}
+
+
+{% block pagecontent %}
+<div class="page-content">
+
+        <div class="container-fluid p-2 mt-2">
+            <h4>Profile</h4>
+        </div>
+
+        <!-- end page title end breadcrumb -->
+        <div class="container-fluid bg-light">
+            <div class="d-flex flex-row justify-content-between p-2">
+                <div class="d-flex flex-row">
+                    <div class="d-flex flex-row">
+                        <div class="p-2"><img src={% static 'vendor/img/motivation.jpg' %} width="100" height="100"></div>
+                        <div class="p-2 pl-3"><b style="font-size: 14pt;">{{user.username}}</b></div>            
+                    </div>
+                </div>
+                <div class="d-flex flex-column pr-4">
+                    <ul>
+                        <li class="mt-2"><b> Mobile Phone: </b>{% if user.mobile  %} {{user.mobile}} {%else%} - {%endif%}</li>
+                        <li class="mt-2"><b> Email: </b> {% if user.email  %} {{user.email}} {%else%} - {%endif%}</li>
+                        <li class="mt-2"><b>Timezone:</b> {% if user.country  %} {{user.country}} / {{user.city}} {%else%} - {%endif%}</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-body">
+                        <!-- Nav tabs -->
+                        <ul class="nav nav-pills nav-justified" role="tablist">
+                            <li class="nav-item waves-effect waves-light">
+                                <a class="nav-link active" data-toggle="tab" href="#profile-tab" role="tab">Profile</a>
+                            </li>
+                            <li class="nav-item waves-effect waves-light">
+                                <a class="nav-link" data-toggle="tab" href="#payment-tab" role="tab">Payments Information</a>
+                            </li>
+                            <li class="nav-item waves-effect waves-light">
+                                <a class="nav-link" data-toggle="tab" href="#settings-tab" role="tab">Settings</a>
+                            </li>
+                        </ul>
+
+                        <!-- Tab panes -->
+                        <div class="tab-content">
+                            <!--General Information Tab -->
+                            <div class="tab-pane active p-3" id="profile-tab" role="tabpanel">
+
+                                <!-- PROFILE-->
+                                <form method='POST'>
+                                    {% csrf_token %}
+                                    <p class="text-muted mb-3 mt-3">Please, fill in your profile and config the system for you</p>
+                                    <div class="row">
+                                        {% comment %} <! First Column > {% endcomment %}
+                                        <div class="col-lg-6">
+                                            <div class="form-group row">
+                                                <label for="{{form.username.id_for_label}}" class="col-sm-2 col-form-label text-left">Username<span class="fa fa-asterisk text-danger font-8"></span></label>
+                                                <div class="col-sm-10">
+                                                    {{form.username}}
+                                                    {% comment %} <input class="form-control" type="text" value="Taras" autocomplete="section-red username" id="username-text-input"> {% endcomment %}
+                                                    <small class="form-text text-muted">Only latin symbols and digits allowed. Whitespace isn't allowed</small>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row">
+                                                <label for="{{form.name.id_for_label}}" class="col-sm-2 col-form-label text-left">Name</label>
+                                                <div class="col-sm-10">
+                                                    {{form.first_name}}
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row">
+                                                <label for="{{form.last_name.id_for_label}}" class="col-sm-2 col-form-label text-left">Last Name</label>
+                                                <div class="col-sm-10">
+                                                    {{form.last_name}}
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row">
+                                                <label for="{{form.email.id_for_label}}" class="col-sm-2 col-form-label text-left">Email <span class="fa fa-asterisk text-danger font-8"></span></label>
+                                                <div class="col-sm-10">
+                                                    {{form.email}}
+                                
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label for="{{form.mobile.id_for_label}}" class="col-sm-2 col-form-label text-left">Mobile <span class="fa fa-asterisk text-danger font-8"></span></label>
+                                                <div class="col-sm-10">
+                                                    {{form.mobile}}
+                                
+                                                </div>
+                                            </div>
+
+                                            
+
+                                        </div>
+
+                                        <div class="col-lg-6">
+
+                                            <div class="form-group row">
+                                                <label for="{{form.country.id_for_label}}" class="col-sm-2 col-form-label text-left">Country</label>
+                                                <div class="col-sm-10">
+                                                    {{form.country}}    
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label for="{{form.city.id_for_label}}" class="col-sm-2 col-form-label text-left">City</label>
+                                                <div class="col-sm-10">
+                                                    {{form.city}}
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label for="{{form.password1.id_for_label}}" class="col-sm-2 col-form-label text-left">Password</label>
+                                                <div class="col-sm-10">
+                                                    {{form.password1}}
+                                
+                                                    <small class="form-text text-muted">Change your password if you need. 8+ characters, uppercase chars, digits and special symbols required.</small>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label for="{{form.password2.id_for_label}}" class="col-sm-2 col-form-label text-left">Re-Password</label>
+                                                <div class="col-sm-10">
+                                                    {{form.password2}}
+                                                    <small class="form-text text-muted">Repeat your new password here</small>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <button class="btn btn-primary ml-3" >Save Changes To Profile</button>
+
+                            </div></form>
+                            <div class="row">
+                                <div class="col-lg-6">
+
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="d-flex justify-content-end">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        {% comment %} <! Payments Tab -> {% endcomment %}
+                        <div class="tab-pane p-3" id="payment-tab" role="tabpanel">
+
+                                <p class="text-muted mb-0 mt-3">
+                                    Here will be some Payments, but in the future releases 🐍
+                                </p>
+                         
+                        </div>
+                        <!-- Settings Tab -->
+                        <div class="tab-pane p-3" id="settings-tab" role="tabpanel">
+                            <p class="text-muted mb-0 mt-3">
+                                Here will be some settings, but in the future releases 🐍
+                            </p>
+                        </div>
+                    </div>
+                </div><!--end card-body-->
+            </div><!--end card-->
+        </div><!--end col-->
+    </div><!--end row-->
+
+</div>
+
+{% endblock %}
