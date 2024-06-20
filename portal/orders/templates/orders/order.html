@@ -157,18 +157,18 @@
                                     <div>
                                         <h4 class="header-title mt-0 mb-3">Source Assets</h4>
                                     </div>
-                                    <div class="file-box-content">
-                                        <div class="file-box">
-                                            <div class="align-self-center text-right pb-3">
-                                                <i class="fa-solid fa-download down"></i>
-                                                    {% comment %}                                                
-                                                    {% for dat in sourseassets %}  
-                                                        <img src='{{ dat.sourse_files.url }}'>
-                                                    {%endfor%} {% endcomment %}
-                                                   
+                                    <div class='file-section'>
+                                    {% for dat in sourseassets %}  
+                                        <div class="file-box-content">
+                                            <div class="file-box">
+                                                <div class="align-self-center text-right pb-3">
+                                                    <i class="fa-solid fa-download down"></i>                                                 
+                                                            <img class='imgsize' src='{{ dat.sourse_files.url }}'> 
+                                                </div>
                                             </div>
-                                        </div>
-                                    </div>  
+                                        </div>  
+                                    {%endfor%} 
+                                    </div>
                                 </div><!--end card-body-->
                             </div><!--end card--> 
  

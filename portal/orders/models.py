@@ -43,6 +43,8 @@ class SourseAssets(models.Model):
     order_id = models.ForeignKey(Order, on_delete=models.CASCADE)
     sourse_files = models.FileField(upload_to='%Y/%m/%d/')
     uploaded_at = models.DateTimeField(auto_now_add=True, null=True)
+    file_extension = models.CharField(max_length=10, default='')
+    size_file = models.IntegerField(default=10)
     # rate_per_face = models.SmallIntegerField()
     # max_val_face = models.SmallIntegerField()
     # num_face = models.SmallIntegerField()

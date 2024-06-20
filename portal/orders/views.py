@@ -19,7 +19,9 @@ def index(request):
 def order_create(request):
     marketplace = MarketPlace.objects.filter(employer_id__user_id=request.user.id)
     if request.method == 'POST':
-        form = OrderCreationForm(request.POST)
+        form = OrderCreationForm(request.POST, request.FILES)
+        print(request.POST)
+        print(request.FILES.getlist('sourse_files'))
         if form.is_valid():
             form.save(request.user, StatusOrder.objects.get(id=1), request.FILES.getlist('sourse_files'))
             return HttpResponseRedirect(reverse('index'))
@@ -43,6 +45,7 @@ def order(request, order_id):
         'history' : history,
         'order' : order,
         'sourseassets' : sourseassets,
-        'title': 'Order'}
+        'title': 'Order',
+        'information' : information}
     return render(request, 'orders/order.html', context)
 
